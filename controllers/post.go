@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"net/http"
-	"strconv"
 
 	"apipress/database"
 	"apipress/models"
@@ -116,8 +115,8 @@ func UpdatePost(c *gin.Context) {
 		return
 	}
 
-    // Update slug if title changed significantly? Usually slugs are permanent, but let's allow basic updates
-    // For now, let's keep slug persistent unless logic demands otherwise.
+	// Update slug if title changed significantly? Usually slugs are permanent, but let's allow basic updates
+	// For now, let's keep slug persistent unless logic demands otherwise.
 
 	if input.Title != "" {
 		post.Title = input.Title
