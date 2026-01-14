@@ -12,7 +12,7 @@ type User struct {
 	Email        string         `gorm:"unique;not null" json:"email"`
 	PasswordHash string         `gorm:"not null" json:"-"`
 	Role         string         `gorm:"default:'author'" json:"role"` // 'admin' or 'author'
-	Posts        []Post         `json:"posts,omitempty"`
+	Posts        []Post         `gorm:"foreignKey:AuthorID" json:"posts,omitempty"`
 	CreatedAt    time.Time      `json:"created_at"`
 	UpdatedAt    time.Time      `json:"updated_at"`
 	DeletedAt    gorm.DeletedAt `gorm:"index" json:"-"`

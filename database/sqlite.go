@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -30,12 +30,12 @@ func Connect() {
 	log.Println("Connected to SQLite database")
 
 	// Auto Migration
-    // Note: models package will be created in next steps, so we might need to update this file or ensure models exists first.
-    // For now I will comment out the migration call until models are ready, or just include it and ensure I create models in this batch.
-    // I will include it and ensure models are created in parallel.
+	// Note: models package will be created in next steps, so we might need to update this file or ensure models exists first.
+	// For now I will comment out the migration call until models are ready, or just include it and ensure I create models in this batch.
+	// I will include it and ensure models are created in parallel.
 	err = DB.AutoMigrate(&models.User{}, &models.Post{})
 	if err != nil {
 		log.Fatal("Failed to migrate database:", err)
 	}
-    log.Println("Database migration completed")
+	log.Println("Database migration completed")
 }
